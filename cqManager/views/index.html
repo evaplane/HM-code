@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="./lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      .logout {
+        font-weight: 900;
+        font-size: 20px;
+        color: #ff0000;
+        text-decoration: none;
+      }
+
+      .logout:hover {
+        text-decoration: none;
+        color: yellowgreen;
+      }
+      #my-table th {
+        text-align: center;
+      }
+      #my-table td {
+        text-align: center;
+        line-height: 50px;
+        padding: 0;
+      }
+      td img {
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button
+                  type="button"
+                  class="navbar-toggle collapsed"
+                  data-toggle="collapse"
+                  data-target="#bs-example-navbar-collapse-1"
+                  aria-expanded="false"
+                >
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">欢迎进入后台管理</a>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div
+                class="collapse navbar-collapse"
+                id="bs-example-navbar-collapse-1"
+              >
+                <p class="navbar-text navbar-right " style="font-weight: 700">
+                  欢迎 【<span class='username'>jack</span>】登录
+                  <a href="#" class="logout">退出</a>
+                </p>
+              </div>
+              <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+          </nav>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <ol class="breadcrumb">
+                <li>
+                  <a href="./index.html">首页</a>
+                </li>
+              </ol>
+            </div>
+            <div class="panel-heading">
+              <!-- action 不写 就是当前页面 method 不写 就是 get -->
+              <div class="row">
+                <div class="col-md-9">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label class="sr-only" for="exampleInputAmount"
+                        >Amount (in dollars)</label
+                      >
+                      <div class="input-group">
+                        <div class="input-group-addon">英雄姓名</div>
+                        <input
+                          type="text"
+                          value=""
+                          class="form-control"
+                          name="search"
+                          placeholder="请输入查询内容"
+                        />
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-search">查找</button>
+                    <a href="add.html" class="btn btn-warning btn-add">新增</a>
+                  </form>
+                </div>
+                <div class="col-md-3">
+                  <ul class="pagination  pull-right" style="margin:0">
+                    <li>
+                      <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">«</span>
+                      </a>
+                    </li>
+                    <li class="page-num"><a href="#">1/1</a></li>
+                    <li>
+                      <a href="#" aria-label="Next">
+                        <span aria-hidden="true">»</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <table id="my-table" class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>姓名</th>
+                    <th>技能</th>
+                    <th>头像</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>盖伦</td>
+                    <td>躲草丛</td>
+                    <td><img src="./lib/img/盖伦.png" alt="" /></td>
+                    <td>
+                      <button onclick="" class="btn btn-success">编辑🍞</button>
+
+                      <button onclick="" class="btn btn-danger">删除👍</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="./lib/bootstrap/js/jquery-1.12.4.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<script src='./lib/js/template-web.js'></script>
+<script id='cq' type='text/html'>
+    {{ each list}}
+          <tr>
+            <td>{{ $value.heroName }}</td>
+            <td>{{ $value.skillName }}</td>
+            <td><img src="{{ $value.heroIcon }}" alt="" /></td>
+            <td data-id="{{ $value._id }}">
+              <button onclick="" class="btn btn-success btn-edit">编辑🍞</button>
+            
+              <button onclick="" class="btn btn-danger btn-delete">删除👍</button>
+            </td>
+          </tr>
+    {{ /each }}
+</script>
+<script>
+  $(function(){
+    let pagenum=1;
+    let totalPages;
+    getData();
+    next();
+    prev();
+    // search();
+    // keySearch();
+    goEdit();
+    deleteOne();
+    logout();
+  
+
+    //1.渲染页面
+    function getData(){
+      const pagesize =10;
+      const query = $("input[name=search]").val();
+
+      $.ajax({
+        url:"herolist",
+        data:{
+          pagenum,
+          pagesize,
+          query
+        },
+        success:(data)=>{
+          console.log(data);
+          //没有登录,就跳转到登录页面
+          if(data.code==400){
+              location='login.html';
+          }
+          //1.1 将数据渲染到页面上
+          $('tbody').html(template('cq',data));
+
+          //1.2 页码渲染到页面上
+          totalPages=data.totalPages;
+          $('.page-num a').text(`${pagenum}/${data.totalPages}`)
+        }
+      })
+    }
+
+    //2.点击下一页,pagenum++
+    function next(){
+      $('.pagination li:last').on('click',function(){
+        if(pagenum>=totalPages){
+          return;
+        }
+        pagenum++;
+        getData();
+      })
+    }
+
+    //3.点击上一页,pagenum--
+    function prev(){
+      $('.pagination li:first').on('click',function(){
+        if(pagenum<=1){
+          return;
+        }
+        pagenum--;
+        getData();
+      })
+    }
+
+    // //4.点击查找
+    // function search(){
+    //   $('.btn-search').on('click',function(e){
+    //     e.preventDefault();
+    //       getData();
+    //   })
+    // }
+
+    // //5.键盘enter查找
+    // function keySearch(){
+    //   $("input[name=search]").on('keyup',function(e){
+    //       if(e.keyCode==13){
+    //         getData();
+    //       }
+    //   })  
+    // }
+
+    //表单提交事件
+    $('form').on('submit',function(e){
+      console.log('提交啦');
+      getData();
+      e.preventDefault();
+    })
+
+    //6.点击编辑,跳转到编辑页面
+    function goEdit(){
+      $('tbody').on('click','.btn-edit',function(){
+            //6.1 获取id
+            const id = $(this).parent().data('id');
+            //6.2 跳转到编辑页面
+            location='edit.html?id='+id;
+          
+      })
+    }
+
+    //7.点击删除
+    function deleteOne(){
+      $('tbody').on('click','.btn-delete',function(){
+          //7.1 获取id
+          const id = $(this).parent().data('id');
+          //7.2 发送请求
+          $.ajax({
+            url:"heroDelete",
+            data:{id},
+            success:data=>{
+              if(data.msg){
+                  getData();
+              }
+            }
+          })
+      })
+
+    }
+
+    //8.获取url传过来的username,渲染在页面上
+    const username = window.location.search.split('=')[1];
+    $('.username').text(username);
+
+    //9.登出
+    function logout(){
+      $('.logout').on('click',function(){
+          $.ajax({
+            url:"logout",
+            success:data=>{
+              console.log(data);
+              if(data.code==200){
+                location='login.html';
+              }
+            }
+          })
+      })
+    }
+  })
+
+
+</script>

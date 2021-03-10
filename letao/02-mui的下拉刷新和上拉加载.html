@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 里面已经有区域滚动 -->
+    <link rel="stylesheet" href="./public/m/lib/mui/css/mui.css">
+    <style>
+        html{
+            font-size: 26.6667vh;   
+        }
+    
+    </style>
+</head>
+
+<body>
+    <!--下拉刷新容器-->
+    <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+        <div class="mui-scroll">
+            <!--数据列表-->
+            <ul class="mui-table-view mui-table-view-chevron">
+
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src='./public/m/lib/mui/js/mui.js'></script>
+<script>
+    mui.init({
+        pullRefresh: {
+            //下拉刷新的容器,区域滚动的容器
+            container: '#pullrefresh',
+            //初始化下拉刷新
+            down: {
+                //下拉显示的内容
+                contentdown:"下拉可以刷新",
+                contentover:"可以松手哦",
+                contentrefresh:'拼命加载中',
+                //下拉刷新的回调函数
+                callback: pulldownRefresh
+            },
+            //初始化上拉加载
+            up: {
+                // 上拉显示的内容
+                contentrefresh: '正在加载...',
+                //上拉加载的回调函数
+                callback: pullupRefresh
+            }
+        }
+    });
+
+
+    	/**
+			 * 下拉刷新具体业务实现
+			 */
+			function pulldownRefresh() {
+				setTimeout(function() {
+					var table = document.body.querySelector('.mui-table-view');
+					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					for (var i = cells.length, len = i + 3; i < len; i++) {
+						var li = document.createElement('li');
+						li.className = 'mui-table-view-cell';
+						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+						//下拉刷新，新纪录插到最前面；
+						table.insertBefore(li, table.firstChild);
+                    }
+                    //数据刷新完毕后结束下拉
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+				}, 1500);
+			}
+			var count = 0;
+			/**
+			 * 上拉加载具体业务实现
+			 */
+			function pullupRefresh() {
+				setTimeout(function() {
+                    //结束上拉.count表示上拉加载,只能上拉两次就没有数据了,传入的数据为true就没有数据了
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+					var table = document.body.querySelector('.mui-table-view');
+					var cells = document.body.querySelectorAll('.mui-table-view-cell');
+					for (var i = cells.length, len = i + 20; i < len; i++) {
+						var li = document.createElement('li');
+						li.className = 'mui-table-view-cell';
+						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+						table.appendChild(li);
+					}
+				}, 1500);
+            }
+
+
+            //判断是iOS还是安卓
+			if (mui.os.plus) {
+				mui.plusReady(function() {
+					setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().pullupLoading();
+					}, 1000);
+
+				});
+			} else {
+				mui.ready(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				});
+			}
+</script>

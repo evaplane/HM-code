@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  vertical-align: middle;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+html {
+  font-size: 26.66667vw;
+}
+a {
+  color: #fff;
+}
+body {
+  font-size: .14rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  line-height: .14rem;
+}
+/*头部基本样式*/
+#header {
+  height: .45rem;
+  background-color: #006699;
+  display: flex;
+}
+#header .left {
+  width: .45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#header .center {
+  flex: 1;
+}
+#header .center h4 {
+  color: #fff;
+  font-weight: normal;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#header .right {
+  width: .45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*主体基本样式*/
+#main {
+  flex: 1;
+}
+/*尾部基本样式*/
+#footer {
+  height: .45rem;
+  background-color: #006699;
+}
+#footer .mui-row > div a {
+  height: .45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#footer .mui-row > div.active a {
+  color: orange;
+}
+/*主体区域*/
+#main {
+  position: relative;
+}
+#main ul li::after {
+  left: 0;
+}
+#main ul li a {
+  white-space: normal;
+}
+#main ul li a .left {
+  margin-right: .1rem;
+}
+#main ul li a .left img {
+  max-width: .8rem;
+  height: .8rem;
+}
+#main ul li a .left .mui-checkbox {
+  text-align: center;
+}
+#main ul li a .left .mui-checkbox input {
+  position: static;
+}
+#main ul li a .left .mui-checkbox input::before {
+  font-size: 0.24rem;
+}
+#main ul li a .mui-media-body .proName {
+  line-height: .20rem;
+}
+#main ul li a .mui-media-body .price strong {
+  color: red;
+}
+#main ul li a .mui-media-body .price del {
+  color: #ccc;
+  line-height: .34rem;
+}
+#main ul li a .mui-media-body .size {
+  line-height: .34rem;
+  color: #666;
+}
+/*订单区域*/
+#order {
+  background-color: #fff;
+}
+#order .mui-pull-left {
+  color: red;
+  line-height: .34rem;
+  margin-left: .2rem;
+}
+/*弹出框*/
+.edit-block {
+  background-color: transparent;
+}
+.edit-block .mui-table-view-cell {
+  padding: .1rem 0;
+}
+.edit-block .mui-table-view-cell span {
+  line-height: .34rem;
+}
+.edit-block .mui-table-view-cell button {
+  margin-bottom: .1rem;
+}
+.edit-block .mui-table-view-cell::after {
+  height: 0;
+}

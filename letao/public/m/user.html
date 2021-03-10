@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分类</title>
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <link rel="stylesheet" href="./lib/fontAwesome/css/font-awesome.css">
+    <link rel="stylesheet" href="./less/user.css">
+</head>
+
+<body>
+    <!-- 头部区域 -->
+    <header id='header'>
+        <div class="left">
+            <a href="#" onClick="javascript:history.go(-1);" class='fa fa-arrow-left'></a>
+        </div>
+        <div class="center">
+            <h4>个人中心</h4>
+        </div>
+        <div class="right">
+        </div>
+    </header>
+
+    <!-- 主体区域 -->
+    <main id="main">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+                    <img class="mui-media-object mui-pull-left" src="./images/user.jpg">
+                    <div class="mui-media-body">
+                        <p>用户名<span class='username'>itcast</span></p>
+                        <p class='mui-ellipsis'>
+                            绑定手机 <span class='teleNum'>111</span>
+                        </p>
+                    </div>
+                </a>
+            </li>
+            <li class="mui-table-view-cell">
+                    <a class="mui-navigate-right">账号与安全</a>
+            </li>
+            <li class="mui-table-view-cell">
+                    <a class="mui-navigate-right">我的购物车</a>
+            </li>
+            <li class="mui-table-view-cell">
+                    <a class="mui-navigate-right">收获地址管理</a>
+            </li>
+            <li class="mui-table-view-cell">
+                <div>
+                    <button type='button' class='mui-btn btn-login'>退出登录</button>
+                </div>
+            </li>
+
+        </ul>
+    </main>
+
+
+    <!-- 底部区域 -->
+    <footer id="footer">
+        <div class="mui-row">
+            <div class="mui-col-xs-3">
+                <a href="index.html">
+                    <i class='fa fa-home'></i>
+                    <span>首页</span>
+                </a>
+            </div>
+            <div class="mui-col-xs-3">
+                <a href="category.html">
+                    <i class='fa fa-bars'></i>
+                    <span>分类</span>
+                </a>
+            </div>
+            <div class="mui-col-xs-3">
+                <a href="cart.html">
+                    <i class='fa fa-shopping-cart'></i>
+                    <span>购物车</span>
+                </a>
+            </div>
+            <div class="mui-col-xs-3 active">
+                <a href="user.html">
+                    <i class='fa fa-user'></i>
+                    <span>个人中心</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+<script src='./lib/mui/js/mui.js'></script>
+<!-- 引入zepto,用于移动端,和jq一样,但是比jq小 -->
+<script src='./lib/zepto/zepto.min.js'></script>
+<!-- template-web.js 是最新版本,不需要加as,如果是template.js的话就要加as,否则不生效-->
+<script src='./lib/artTemplate/template-web.js'></script>
+
+<script src='js/user.js'></script>

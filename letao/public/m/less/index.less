@@ -1,0 +1,74 @@
+@import 'base.less';
+
+#header{
+    .center{
+        .dfcc();
+        h4{
+            color: #fff;
+            font-weight: normal;
+         }
+    }
+}
+#main{
+    // overflow: hidden;
+    position: relative;
+    #nav{
+        padding: 10px;
+        >div{
+            a{
+                display: block;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    #banner{
+        padding: 0 10px;
+        .mui-row{
+            >div{
+                a{
+                    img{
+                        width: 100%;
+                    }
+                }
+            }   
+
+            .mui-col-xs-8{
+                a{
+                    display: block;
+                    img{
+                        height: 1.2rem;
+                    }
+                }
+            }
+
+           .mui-col-xs-4{
+               a{
+                   display: block;
+                   img{
+                       height: 2.4rem;
+                   }
+               }
+           }
+        }
+    }
+
+
+    #brand,#sports,#man,#woman{
+        padding: .1rem .1rem 0;
+        .title{
+            a:nth-child(1){
+                background: #fff;
+                padding: 20px 0;
+            }
+        }
+        a{
+            display: block;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}

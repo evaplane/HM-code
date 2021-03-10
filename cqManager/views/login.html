@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap 101 Template</title>
+
+  <!-- Bootstrap -->
+  <link href="./lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+  <style>
+    .login-panel {
+      margin-top: 200px;
+    }
+    .vCode{
+      height: 36px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-primary login-panel">
+          <div class="panel-heading">
+            <h3 class="panel-title">登录英雄管理系统</h3>
+          </div>
+          <div class="panel-body">
+            <form action="#" method="post"  class="form-horizontal">
+              <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-10">
+                  <input type="text" name="username" value="赵*天" class="form-control" id="username" placeholder="请输入用户名">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">密码</label>
+                <div class="col-sm-10">
+                  <input type="password" name="password" value="1234" class="form-control" id="password" placeholder="请输入密码">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="vcode" class="col-sm-2 control-label">验证码</label>
+                <div class="col-sm-6">
+                  <input type="text" name="vcode" class="form-control" id="vcode" placeholder="请输入验证码">
+                </div>
+                <div class="col-sm-4">
+                  <!-- 设置验证码的src为路由地址即可获取到验证码 -->
+                  <img class='vCode' src="/captcha" alt="">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-success login">登陆</button>
+                  <a href="./register.html" class="btn btn-danger">注册</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="./lib/bootstrap/js/jquery-1.12.4.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<script src='lib/md5/md5.min.js'></script>
+<script>
+    $(function(){
+      login();
+        //1.点击图片重新获取验证码,改变vCode的src即可,为了避免缓存,加上随机数或者时间戳
+        $('.vCode').on('click',function(){
+            // $(this).attr('src',`/captcha?${Date.now()}`);
+            $(this).attr('src',`/captcha?${Math.random()}`)
+        })
+
+        //2.点击登录
+        function login(){
+          $('.login').on('click',function(e){
+            e.preventDefault();
+            //加密密码
+            const password = md5($('#password').val(),'helloEva');
+
+            $('#password').val(password);
+            console.log(password);
+            //发送ajax请求给后台
+            $.ajax({
+              url:"login",
+              data:$('form').serialize(),
+              type:"post",
+              success:data=>{
+                console.log(data);
+                  //登录成功,把username传到index.html
+                  if(data.code==200){
+                      location='index.html?username='+data.username;
+                  //验证码错误就刷新验证码
+                  }else if(data.code==401){
+                    $('.vCode').attr('src',`/captcha?${Date.now()}`)
+                  }else{
+                    alert(data.msg);
+                  }
+              }
+            })
+          })
+        }
+        
+    })
+
+</script>

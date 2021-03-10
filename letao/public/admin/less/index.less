@@ -1,0 +1,97 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body,html{
+    height: 100%;
+}
+#main{
+    height: 100%;
+    display: flex;
+    .left{
+        width: 200px;
+        height: 100%;
+        background-color: skyblue;
+        .icon{
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            img{
+                width: 130px;
+                height: 130px;
+                border-radius: 50%;
+                border: 10px solid #fff;
+                box-shadow: 0px 0px 2px 2px pink;
+                margin-bottom: 10px;
+            }
+        }
+        .list-group{
+            .list-group-item{
+                border: 0;
+                background-color: transparent;
+
+                &.active{
+                    background-color: pink;
+                }
+                &:hover{
+                    background-color: pink;
+                }
+
+            }
+            #collapseExample{
+                margin-left: 20px;
+            }
+        }
+    }
+
+    .right{
+        flex: 1;
+        #header{
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            a{
+                text-decoration: none;
+                font-size: 14px;
+                &::before{
+                    font-size: 25px;
+                    vertical-align: middle;
+                }
+                &.glyphicon-th-list{
+                    color: yellowgreen;
+                }
+            }
+        }
+
+        .content{
+            background-color: #f5f5f5;
+            padding: 20px;
+            th,td{
+                text-align: center;
+                padding: 0;
+                line-height: 85px;
+            }
+            
+                img{
+                    width: 165px;
+                    height: 85px;
+                }
+
+            
+            
+        }
+    }
+}
+
+/*模态框*/
+.modal{
+    .modal-body{
+        text-align: center;
+        img{
+            width: 150px;
+        }
+    }
+}

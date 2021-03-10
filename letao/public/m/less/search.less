@@ -1,0 +1,92 @@
+@import 'base.less';
+
+#header{
+    .center{
+        .dfcc();
+        h4{
+            color:#fff;
+            font-weight: normal;
+        }
+    }
+}
+
+#main{
+    padding: .1rem;
+    background-color: #fff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+    form{
+        display: flex;
+        padding: .05rem;
+        height: .45rem;
+        
+        input{
+            margin: 0;
+            height: 0.35rem;
+            font-size: .14rem;
+            border: 1px solid @main-color;
+            flex: 1;
+            border-radius: .06rem 0 0 .06rem;
+            height: 100%;
+        }
+        button{
+            border-radius: 0 0.06rem .06rem 0;
+            background-color: @main-color;
+            width: 0.7rem;
+        }   
+    }
+
+    
+    
+    .mui-card{
+        font-size: .14rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0;
+        .mui-card-header{
+            height: .44rem;
+            span{
+                font-size: .14rem;
+            }
+            a{
+                color: #666;
+                display: block;
+            }
+
+        }
+        
+        .mui-card-content{
+            height: auto;
+            flex: 1;
+            position: relative;
+
+            .mui-scroll-wrapper{
+                height: 100%;
+                .mui-scroll{
+                    height: auto;
+                }
+            }
+            ul{
+                li{
+                    a{
+                        display: block;
+                        width: 90%;
+                        height: 100%;
+                    }
+                    &::after{
+                        position: absolute;
+                        left: 0;
+                    }
+                    .mui-badge{
+                        width: .18rem;
+                        height: .18rem;
+                        .dfcc();
+                    }
+                }
+            }
+        }
+    }
+}

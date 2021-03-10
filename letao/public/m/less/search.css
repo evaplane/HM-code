@@ -1,0 +1,158 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  vertical-align: middle;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+html {
+  font-size: 26.66667vw;
+}
+a {
+  color: #fff;
+}
+body {
+  font-size: .14rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  line-height: .14rem;
+}
+/*头部基本样式*/
+#header {
+  height: .45rem;
+  background-color: #006699;
+  display: flex;
+}
+#header .left {
+  width: .45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#header .center {
+  flex: 1;
+}
+#header .center h4 {
+  color: #fff;
+  font-weight: normal;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#header .right {
+  width: .45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*主体基本样式*/
+#main {
+  flex: 1;
+}
+/*尾部基本样式*/
+#footer {
+  height: .45rem;
+  background-color: #006699;
+}
+#footer .mui-row > div a {
+  height: .45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#footer .mui-row > div.active a {
+  color: orange;
+}
+#header .center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#header .center h4 {
+  color: #fff;
+  font-weight: normal;
+}
+#main {
+  padding: .1rem;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+}
+#main form {
+  display: flex;
+  padding: .05rem;
+  height: .45rem;
+}
+#main form input {
+  margin: 0;
+  height: 0.35rem;
+  font-size: .14rem;
+  border: 1px solid #006699;
+  flex: 1;
+  border-radius: .06rem 0 0 .06rem;
+  height: 100%;
+}
+#main form button {
+  border-radius: 0 0.06rem .06rem 0;
+  background-color: #006699;
+  width: 0.7rem;
+}
+#main .mui-card {
+  font-size: .14rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+#main .mui-card .mui-card-header {
+  height: .44rem;
+}
+#main .mui-card .mui-card-header span {
+  font-size: .14rem;
+}
+#main .mui-card .mui-card-header a {
+  color: #666;
+  display: block;
+}
+#main .mui-card .mui-card-content {
+  height: auto;
+  flex: 1;
+  position: relative;
+}
+#main .mui-card .mui-card-content .mui-scroll-wrapper {
+  height: 100%;
+}
+#main .mui-card .mui-card-content .mui-scroll-wrapper .mui-scroll {
+  height: auto;
+}
+#main .mui-card .mui-card-content ul li a {
+  display: block;
+  width: 90%;
+  height: 100%;
+}
+#main .mui-card .mui-card-content ul li::after {
+  position: absolute;
+  left: 0;
+}
+#main .mui-card .mui-card-content ul li .mui-badge {
+  width: .18rem;
+  height: .18rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

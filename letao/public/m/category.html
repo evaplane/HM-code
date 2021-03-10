@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分类</title>
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <link rel="stylesheet" href="./lib/fontAwesome/css/font-awesome.css">
+    <link rel="stylesheet" href="./less/category.css">
+</head>
+
+<body>
+    <!-- 头部区域 -->
+    <header id='header'>
+        <div class="left">
+            <a href="#" onClick="javascript:history.go(-1);" class='fa fa-arrow-left'></a>
+        </div>
+        <div class="center">
+            <form action="#">
+                <input type="text" placeholder="请输入要搜索的商品">
+            </form>
+        </div>
+        <div class="right">
+            <a href="search.html" class="fa fa-search" aria-hidden="true"></a>
+        </div>
+    </header>
+
+    <!-- 主体区域 -->
+    <main id="main">
+        <div class="mask">
+            <img src="images/loading.gif" alt="">
+        </div>
+        <div class="left-category">
+            <div class="mui-scroll-wrapper">
+                <div class="mui-scroll">
+                    <ul class="mui-table-view">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-category">
+            <div class="mui-scroll-wrapper">
+                <div class="mui-scroll">
+                    <div class="mui-row">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+    <!-- 底部区域 -->
+    <footer id="footer">
+        <div class="mui-row">
+            <div class="mui-col-xs-3">
+                <a href="index.html">
+                    <i class='fa fa-home'></i>
+                    <span>首页</span>
+                </a>
+            </div>
+            <div class="mui-col-xs-3 active">
+                <a href="category.html">
+                    <i class='fa fa-bars'></i>
+                    <span>分类</span>
+                </a>
+            </div>
+            <div class="mui-col-xs-3">
+                <a href="cart.html">
+                    <i class='fa fa-shopping-cart'></i>
+                    <span>购物车</span>
+                </a>
+            </div>
+            <div class="mui-col-xs-3">
+                <a href="user.html">
+                    <i class='fa fa-user'></i>
+                    <span>个人中心</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
+<script src='./lib/mui/js/mui.js'></script>
+<!-- 引入zepto,用于移动端,和jq一样,但是比jq小 -->
+<script src='./lib/zepto/zepto.min.js'></script>
+<!-- template-web.js 是最新版本,不需要加as,如果是template.js的话就要加as,否则不生效-->
+<script src='./lib/artTemplate/template-web.js'></script>
+
+<!-- 左侧模板引擎 -->
+<script id='tpl' type='text/html'>
+    {{ each rows value }}
+    <!-- 给class一个三元表达式,如果id==1,就给一个类名active,否则就给一个空 -->
+    <li class="mui-table-view-cell {{ value.id==1?'active':''}}" data-id="{{ value.id }}"><a
+            href="#">{{ value.categoryName }}</a></li>
+    {{ /each }}
+</script>
+
+<!-- 右侧模板引擎 -->
+<script id='rightTpl' type='text/html'>
+    {{ each rows value}}
+    <div class="mui-col-xs-4"><a href="#"><img src="{{ value.brandLogo }}" alt="">
+            <p>{{ value.brandName }}</p>
+        </a>
+    </div>
+    {{ /each }}
+</script>
+
+<script src='js/category.js'></script>

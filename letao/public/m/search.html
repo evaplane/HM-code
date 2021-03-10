@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搜索页面</title>
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <link rel="stylesheet" href="./lib/fontAwesome/css/font-awesome.css">
+    <link rel="stylesheet" href="./less/search.css">
+</head>
+
+<body>
+    <!-- 头部区域 -->
+    <header id='header'>
+        <div class="left">
+            <a href="#"  onClick="javascript:history.go(-1);"  class='fa fa-arrow-left'></a>
+        </div>
+        <div class="center">
+            <h4>搜索页面</h4>
+        </div>
+        <div class="right">
+        </div>
+    </header>
+
+    <!-- 主体区域 -->
+    <main id="main">
+        <!-- 卡片视图和列表,直接复制 -->
+        <!-- mui-badge是mui提供的右边带数字角标的样式 -->
+        <form>
+            <input type="text" class='searchInput' placeholder="请输入要搜索商品">
+            <!-- 默认类型是submit,要写type=button -->
+            <button type='button' class='mui-btn mui-btn-primary search'>搜索</button>
+        </form>
+
+
+        <!-- 卡片 -->
+        <div class="mui-card">
+            <!--页眉，放置标题-->
+            <div class="mui-card-header">
+                <span>搜索历史</span>
+                <a href="#" class='fa fa-trash clear'>清空记录</a>
+
+
+            </div>
+            <!--内容区-->
+            <!-- 给内容区添加区域滚动-->
+            <div class="mui-card-content">
+                <div class="mui-scroll-wrapper">
+                    <div class="mui-scroll">
+                        <ul class="mui-table-view">
+                            <li class="mui-table-view-cell"> 没有更多记录
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!--页脚，放置补充信息或支持的操作-->
+            <!-- <div class="mui-card-footer">页脚</div> -->
+        </div>
+
+
+    </main>
+    <!-- 底部区域 -->
+    <footer id="footer">
+        <div class="mui-row">
+            <div class="mui-col-xs-3">
+                <a href="index.html">
+                    <i class='fa fa-home'></i>
+                    <span>首页</span>
+                </a>
+            </div>
+            <div class="mui-col-xs-3">
+                <a href="category.html">
+                    <i class='fa fa-bars'></i>
+                    <span>分类</span>
+                </a>
+            </div>
+            <div class="mui-col-xs-3">
+                <a href="car.html">
+                    <i class='fa fa-shopping-cart'></i>
+                    <span>购物车</span>
+                </a>
+            </div>
+            <div class="mui-col-xs-3">
+                <a href="user.html">
+                    <i class='fa fa-user'></i>
+                    <span>个人中心</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
+<script src='lib/mui/js/mui.js'></script>
+<script src='./lib/zepto/zepto.min.js'></script>
+<script src='lib/artTemplate/template-web.js'></script>
+<!-- 将获取的arr渲染到页面上 -->
+<script id='searchTpl' type="text/html">
+    {{ if list.length <= 0}}
+    <li class="mui-table-view-cell">
+        <span class='value'>没有更多记录</span>
+    </li>
+    {{ else }}
+    {{ each list value index }}
+    <li class="mui-table-view-cell">
+        <!-- 点击每一个搜索过的也可以跳到商品列表,有的时候点击close也会触发a标签.把a变小-->
+        <a href="productlist.html?search={{ value }}">
+            <span class='value'> {{ value }}</span>
+        </a>
+        <span class="mui-badge fa fa-close close" data-index="{{ index }}"></span>
+    </li>
+    {{ /each }}
+    {{ /if }}
+</script>
+<script src='js/search.js'></script>

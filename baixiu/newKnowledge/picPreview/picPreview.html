@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        要做图片预览:需要两个功能img和file
+
+        值改变事件  onchange
+        用file选择完的文件都放在了file的files属性里,files属性是一个数组,选择一个元素,取到第0个索引,就是这个文件的路径对象
+        需要转化为路径
+
+        1.临时url,赋值为img的src
+        var url = URL.createObjectURL('file.files[0]')
+
+        2.永久路径,在值改变事件发送一个ajax请求
+        ajax怎么传文件呢?send()里面是key=value的形式,ajax不能异步上传文件
+
+        所以有ajax2.0 解决异步上传文件的问题
+        多了FormData对象,并且不用设置请求头
+
+        1.创建formData对象  var  fm = new FormData()
+
+        2.调用append()方法就可以  fm.append('icon',file.files[0]);
+
+        3.xhr.send(fm);
+     -->
+</head>
+<body>
+    <!-- <form action="./pic.php" enctype="multipart/form-data" method="POST"> -->
+        <input type="file" name="file" id="file">
+        <!-- <input type="submit" value="上传"> -->
+        <img src="" alt="" id='icon'>
+    <!-- </form> -->
+</body>
+</html>
+
+
+<script>
+//1.获取文件对象
+var file = document.getElementById('file');
+var icon = document.getElementById('icon');
+
+//2.值改变事件
+file.onchange=function(){
+    //2.1 临时url的创建
+    //2.1.1 用URL.createObjectURL()把file.files[0]属性转换为路径
+    //var url = URL.createObjectURL(file.files[0]);
+    //2.1.2 添加到img的src中
+    //icon.src=url;
+
+    //2.2 永久url的创建
+    //2.2.1 写一个接口,用来接收file,把路径存在服务器中,接收路径的响应体
+    //2.2.2 写一个ajax2.0请求,获取响应体,因为1.0不能传文件file
+    //a.post请求不需要写请求头
+    //b.需要创建一个FormData对象,调用增加append方法,然后把路径的键和值传进去,相当于这个fm对象里面有file的路径
+    //c.在xhr.send()方法里面传入fm即可
+    var xhr  = new XMLHttpRequest();
+    xhr.open('post','pic.php');
+    var fm = new FormData();
+    fm.append('file',file.files[0]);
+    xhr.send(fm);
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState==4 && xhr.status==200){
+            console.log( xhr.responseText);
+            icon.src=xhr.responseText;
+           
+        }
+    }
+
+    
+}
+
+</script>

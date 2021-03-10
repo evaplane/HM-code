@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>二级分类</title>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./less/index.css" />
+  </head>
+  <body>
+    <main id="main">
+      <div class="left">
+        <div class="icon">
+          <img src="images/25.png" alt="" />
+          <p>王凯旋</p>
+        </div>
+        <!-- 表单+collapse(折叠) -->
+        <div class="list-group">
+          <a href="index.html" class="list-group-item">
+            用户管理
+          </a>
+
+          <a
+            class="list-group-item active"
+            data-toggle="collapse"
+            href="#collapseExample"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            分类管理
+          </a>
+
+          <div class="collapse in" id="collapseExample">
+            <div class="list-group">
+              <a href="./firstCategory.html" class="list-group-item"
+                >一级分类</a
+              >
+              <a href="./secondCategory.html" class="list-group-item active"
+                >二级分类</a
+              >
+            </div>
+          </div>
+          <a href="#" class="list-group-item">商品管理</a>
+        </div>
+      </div>
+      <div class="right">
+        <header id="header">
+          <a href="#" class="glyphicon glyphicon-th-list"></a>
+          <a href="#" class="glyphicon glyphicon-off logout">
+            <span>退出</span>
+          </a>
+        </header>
+        <div class="content">
+          <button
+            type="button"
+            class="btn btn-primary addBrand"
+            data-toggle="modal"
+            data-target="#myModal"
+          >
+            添加品牌
+          </button>
+          <table class="table table-bordered table-hover table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>品牌编号</th>
+                <th>品牌名称</th>
+                <th>品牌logo</th>
+                <th>所属分类</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">
+                  <input type="checkbox" name="" id="" />
+                </th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>
+                  <img
+                    src="../upload/brand/064bc210-31c4-11e9-b8a5-152053272b27.png"
+                    alt=""
+                  />
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- 分页 -->
+          <ul id="page"></ul>
+        </div>
+      </div>
+    </main>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">添加品牌</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label"
+                  >分类名称</label
+                >
+                <div class="col-sm-10">
+                  <select name="" id=""  class="form-control categoryName">
+                      <option value="运动馆">运动馆</option>
+                      <option value="运动馆">运动馆</option>
+                      <option value="运动馆">运动馆</option>
+                      <option value="运动馆">运动馆</option>
+                      <option value="运动馆">运动馆</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label "
+                  >品牌名称</label
+                >
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control brandName"
+                    id="inputPassword3"
+                    placeholder="请输入分类名称"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label "
+                  >品牌图片</label
+                >
+                <div class="col-sm-10">
+                  <input type="file" class="form-control brandLogo" name="" id="">
+                </div>
+              </div>
+            </form>
+            <img src="images/25.png" class="logoPic" alt="">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              关闭
+            </button>
+            <button type="button" class="btn btn-primary btn-save" data-dismiss="modal">
+              保存
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+<!-- 引入分页插件 -->
+<script src="./lib/bootstrap/js/bootstrap-paginator.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
+<script id="secondTpl" type="text/html">
+  {{ each rows value}}
+      <tr>
+          <th scope="row">
+            <input type="checkbox" name="" id="">
+          </th>
+          <td>{{ value.id }}</td>
+          <td>{{ value.brandName }}</td>
+          <td>
+            <img src="{{ value.brandLogo }}" alt="">
+          </td>
+          <td>
+            {{ value.categoryName }}
+          </td>
+        </tr>
+  {{ /each }}
+</script>
+<script src="js/common.js"></script>
+<script src="js/secondCategory.js"></script>

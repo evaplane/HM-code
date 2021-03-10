@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  vertical-align: middle;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+html {
+  font-size: 26.66667vw;
+}
+a {
+  color: #fff;
+}
+body {
+  font-size: .14rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  line-height: .14rem;
+}
+/*头部基本样式*/
+#header {
+  height: .45rem;
+  background-color: #006699;
+  display: flex;
+}
+#header .left {
+  width: .45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#header .center {
+  flex: 1;
+}
+#header .center h4 {
+  color: #fff;
+  font-weight: normal;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#header .right {
+  width: .45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*主体基本样式*/
+#main {
+  flex: 1;
+}
+/*尾部基本样式*/
+#footer {
+  height: .45rem;
+  background-color: #006699;
+}
+#footer .mui-row > div a {
+  height: .45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#footer .mui-row > div.active a {
+  color: orange;
+}
+#main ul li a .mui-media-body p {
+  line-height: .2rem;
+}
+#main ul .mui-table-view-cell {
+  line-height: .25rem;
+}
+#main ul .mui-table-view-cell .btn-login {
+  width: 100%;
+}

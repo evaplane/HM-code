@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>首页</title>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="./less/index.css" />
+  </head>
+  <body>
+    <main id="main">
+      <div class="left">
+        <div class="icon">
+          <img src="images/25.png" alt="" />
+          <p>王凯旋</p>
+        </div>
+        <!-- 表单+collapse(折叠) -->
+        <div class="list-group">
+          <a href="#" class="list-group-item active">
+            用户管理
+          </a>
+
+          <a
+            class="list-group-item"
+            data-toggle="collapse"
+            href="#collapseExample"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            分类管理
+          </a>
+
+          <div class="collapse" id="collapseExample">
+            <div class="list-group">
+              <a href="./firstCategory.html" class="list-group-item">一级分类</a>
+              <a href="./secondCategory.html" class="list-group-item">二级分类</a>
+            </div>
+          </div>
+          <a href="#" class="list-group-item">商品管理</a>
+        </div>
+      </div>
+      <div class="right">
+        <header id="header">
+          <a href="#" class="glyphicon glyphicon-th-list"></a>
+          <a href="#" class="glyphicon glyphicon-off logout">
+            <span>退出</span>
+          </a>
+        </header>
+        <div class="content">
+          <table class="table table-bordered table-hover table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>用户名</th>
+                <th>电话</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>
+                    <button type="button" class="btn btn-success">启用</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- 分页 -->
+          <ul id="page"></ul>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+<!-- 引入分页插件 -->
+<script src='./lib/bootstrap/js/bootstrap-paginator.js'></script>
+<script src='lib/artTemplate/template-web.js'></script>
+<script id="trTpl" type="text/html">
+  {{ each rows value}}
+    <tr>
+          <th scope="row">{{ value.id }}</th>
+          <td>{{ value.username }}</td>
+          <td>{{ value.mobile }}</td>
+          {{ if value.isDelete==0 }}
+          <td>
+              已禁用
+          </td>
+          <td>
+              <button type="button" class="btn btn-success btn-use" data-isdelete="0" data-id={{ value.id }}>启用</button>
+          </td>
+          {{ else }}
+          <td>
+              已启用
+          </td>
+          <td>
+              <button type="button" class="btn btn-danger btn-use" data-isdelete="1" data-id={{ value.id }}>禁用</button>
+          </td>
+          {{ /if }}
+    </tr>
+  {{ /each }}
+</script>
+<script src='js/common.js'></script>
+<script src="js/index.js"></script>

@@ -1,0 +1,89 @@
+@import 'base.less';
+
+#main {
+    background-color: #fff;
+    overflow: hidden;
+    .mui-scroll-wrapper{
+        height: 100%;
+        position: relative;
+        .mui-scroll{
+            height: auto;
+        }
+    }
+
+    form {
+        display: flex;
+        padding: 0.05rem;
+        height: .45rem;
+
+        input {
+            margin: 0;
+            height: 0.35rem;
+            font-size: .14rem;
+            border: 1px solid @main-color;
+            flex: 1;
+            border-radius: .06rem 0 0 .06rem;
+            height: 100%;
+        }
+
+        button {
+            border-radius: 0 0.06rem .06rem 0;
+            background-color: @main-color;
+            width: 0.7rem;
+        }
+    }
+
+    .mui-card {
+        margin: .1rem 0;
+        box-shadow: 0 0 0 transparent;
+
+        .mui-card-header {
+            font-size: .14rem;
+            background-color: #eee;
+            padding: 0;
+            min-height: .3rem;
+            padding: 0 .1rem;
+
+            a {
+                color: #666;
+
+                &.active {
+                    color: red;
+                }
+            }
+        }
+
+        .mui-card-content {
+            margin: .05rem;
+            text-align: center;
+
+            .mui-row {
+                >div {
+                    padding: .05rem;
+
+                    a {
+                        display: block;
+                        border: 0.01rem solid #ccc;
+                        padding-bottom: .15rem;
+
+                        img {
+                            width: 100%;
+                        }
+
+                        .productName {
+                            line-height: .2rem;
+                            height: .4rem;
+                            //段落超出部分点点点
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 2;
+                            overflow: hidden;
+                            text-overflow:ellipsis;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,84 @@
+@import 'base.less';
+
+/*主体区域*/
+#main{
+    position: relative;
+    ul{
+        li{
+            &::after{
+                left: 0;
+            }
+            a{
+                white-space: normal;
+                .left{
+                    margin-right: .1rem;
+                    img{
+                        max-width: .8rem;
+                        height: .8rem;
+                    }
+                    .mui-checkbox{
+                        text-align: center;
+                        input{
+                            position: static;
+                            &::before{
+                                font-size: .24rem
+                            }
+                        }
+                    }
+                }
+                .mui-media-body{
+                    .proName{
+                        line-height: .20rem;
+                    }
+                    .price{
+                        strong{
+                            color:red;
+                        }
+                        del{
+                            color: #ccc;
+                            line-height: .34rem;
+                        }
+                    }
+                    .size{
+                        line-height: .34rem;
+                        color: #666;
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*订单区域*/
+#order{
+    background-color: #fff;
+    .mui-pull-left{
+        color: red;
+        line-height: .34rem;
+        margin-left: .2rem;
+
+    }
+}
+
+/*弹出框*/
+.edit-block{
+    background-color: transparent;
+        .mui-table-view-cell{
+            padding: .1rem 0;
+            span{
+                line-height: .34rem;
+            }
+            button{
+                margin-bottom: .1rem;
+            }
+            &::after{
+               height: 0;
+            }
+        }
+
+        .num{
+
+        }
+    
+}
